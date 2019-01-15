@@ -3,8 +3,8 @@ import 'validator.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Bloc extends Object with ValidatorMixing{  //Extended Object cause we can't add Mixing without inheritance
-  final _email = StreamController<String>.broadcast();  //Email StreamController
-  final _password = StreamController<String>.broadcast(); //Password StreamController
+  final _email = BehaviorSubject<String>();  //Email StreamController
+  final _password = BehaviorSubject<String>(); //Password StreamController
   
   Stream<String> get email => _email.stream.transform(emailValidator);
   Stream<String> get password => _password.stream.transform(passwordValidator);
@@ -16,6 +16,11 @@ class Bloc extends Object with ValidatorMixing{  //Extended Object cause we can'
   dispose() {
     _email.close();
     _password.close();
+  }
+
+  submit() {
+    print(_email.value);
+    print(_password.value);
   }
 }
 

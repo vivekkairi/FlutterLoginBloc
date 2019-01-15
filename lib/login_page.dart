@@ -75,12 +75,7 @@ Widget submitButton() {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         color: Colors.blue,
         onPressed: snapshot.hasData
-            ? () {
-                final scaffold = Scaffold.of(context);
-                scaffold.showSnackBar(SnackBar(
-                  content: const Text('Logged In'),
-                ));
-              }
+            ? bloc.submit
             : null,
         child: Text("Login",),
       );
@@ -88,4 +83,3 @@ Widget submitButton() {
   );
 }
 
-void showSnackBar(BuildContext context) {}

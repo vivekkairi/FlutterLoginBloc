@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class ValidatorMixing {
-  static RegExp _regex = RegExp("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}\$");
+  static RegExp _regex = RegExp("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}\$");  //Regex for email validation
   final emailValidator = StreamTransformer<String,String>.fromHandlers(
     handleData: (email,sink) {
       if(_regex.hasMatch(email)) {
